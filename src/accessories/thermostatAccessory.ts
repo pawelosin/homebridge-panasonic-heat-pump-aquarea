@@ -129,7 +129,7 @@ export class ThermostatAccessory extends Accessory<DeviceContext> {
       return;
     }
     const parsedTemp = parseInt(temp as string);
-    const adjustedTemp = this.zoneSensor === 'internal' ? parsedTemp : parsedTemp - readings.temperatureNow;
+    const adjustedTemp = this.zoneSensor === 'internal' ? parsedTemp : parsedTemp;
 
     try {
       this.panasonicApi.setZoneTemp(this.accessory.context.device.uniqueId,
@@ -260,9 +260,9 @@ export class ThermostatAccessory extends Accessory<DeviceContext> {
       });
       return targetTempSet;
     }
-    const tempMin = Math.floor(targetTempMin) + Math.floor(temperatureNow);
-    const tempMax = Math.ceil(targetTempMax) + Math.ceil(temperatureNow);
-    const tempCurrent = Math.round(targetTempSet + temperatureNow);
+    const tempMin = Math.floor(targetTempMin);
+    const tempMax = Math.ceil(targetTempMax);
+    const tempCurrent = Math.round(targetTempSet);
     this.platform.log.debug(`Updating TargetTemperature of Floor Heater: ${JSON.stringify({
       minValue: tempMin,
       maxValue: tempMax,
