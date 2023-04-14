@@ -3,7 +3,7 @@ import { ThermostatAccessory } from './accessories/thermostatAccessory';
 
 export enum AccessoryType {
     Thermostat,
-    Thermometer
+    //Thermometer
 }
 export interface Device {
     uniqueId: string;
@@ -18,7 +18,7 @@ export interface DeviceContext {
     type: AccessoryType;
 }
 export const accessoryTypeClases = {
-  [AccessoryType.Thermometer]: ThermometerAccessory,
+  //[AccessoryType.Thermometer]: ThermometerAccessory,
   [AccessoryType.Thermostat]: ThermostatAccessory,
 };
 export type DeviceDetails = {
